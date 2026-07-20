@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 header{
     height: 70px;
@@ -27,6 +28,45 @@ header h1{
 .menu-btn{
     margin-left: auto;
     font-size: 25px;
+    cursor:pointer;
+}
+.hamburgerMenu{
+    position:fixed;
+    top:0;
+    width:300px;
+    height:fit-content;
+    background:white;
+    display: none;
+    overflow-y:auto;
+}
+.hamburgerMenu.active{
+    right:0;
+    display: block;
+}
+.close{
+    float: right;
+    color:#ff6600;
+    margin:10px;
+    border: 1px solid #ff6600;
+    border-radius: 50%;
+    cursor:pointer;
+}
+.hamburgerMenu h2{
+    padding:20px;
+    color: rgb(99, 98, 98);
+}
+.hamburgerMenu ul{
+    list-style:none;
+}
+.hamburgerMenu li{
+    color: rgb(99, 98, 98);
+    margin: 14px 20px;
+    padding-bottom: 20px;
+    border-bottom:1px solid #ddd;
+    cursor:pointer;
+}
+.hamburgerMenu li:hover{
+    background:#ffe8d6;
 }
 @media screen and (max-width: 320px) {
     header h1{
