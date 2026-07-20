@@ -17,3 +17,24 @@ async function loadCategories(){
     });
 }
 loadCategories();
+async function categoryData(){
+    try{
+        const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+        const data = await response.json();
+        const containerCards = data.categories.map((product)=>{
+        return(
+            `
+                <div class="categoryCard">
+                    <h5>${product.strCategory}</h5>
+                    <img src=${product.strCategoryThumb} alt=${product.strCategory}>
+                </div>
+            `
+        );
+    });
+    const categories = document.getElementById('categoriesCards');
+    categories.innerHTML = containerCards.join(" ");
+    }catch(error){
+        document.getElementById("categoriesCards").textContent = "Unable to load Categories List !";
+    }
+}
+categoryData();

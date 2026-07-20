@@ -38,6 +38,8 @@ header h1{
     background:white;
     display: none;
     overflow-y:auto;
+    transition: right 0.3s ease;
+    z-index: 1000;
 }
 .hamburgerMenu.active{
     right:0;
@@ -110,6 +112,42 @@ header h1{
     color: rgb(212, 212, 212);
     margin-top: 1%;
 }
+.categoriesContainer h4{
+    font-size: 25px;
+}
+.categoriesContainer hr{
+    width:4%;
+    border: 2px solid #ff6600;
+}
+.categoriesContainer{
+    padding: 3% 5%;
+    background-color: #f7f4f4;
+}
+.categoriesCards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:2%;
+    margin: 3% 0 5% 0;
+}
+.categoryCard{
+    border-radius: 3%;
+    background: #ffff;
+    position: relative;
+}
+.categoryCard h5{
+    border:1px solid #ff6600;
+    background-color: #ff6600;
+    color: #ffff;
+    text-transform: uppercase;
+    padding:1%;
+    position: absolute;
+    right: 2%;
+    top:2%
+}
+.categoryCard img{
+    width: 100%;
+    object-fit: contain;
+}
 @media screen and (max-width: 320px) {
     header h1{
         padding-left: 3%;
@@ -130,7 +168,13 @@ header h1{
     }
     .hero-content p{
         font-size: 7px;
-    }    
+    } 
+    .categoriesContainer hr{
+        width:20%;
+    }
+    .categoryCard h5{
+        font-size: 7px;
+    }   
 }
 @media (min-width:321px) and (max-width: 767px) {
     header h1{
@@ -152,7 +196,13 @@ header h1{
     }
     .hero-content p{
         font-size: 8px;
-    }    
+    }
+    .categoriesContainer hr{
+        width:10%;
+    }
+    .categoryCard h5{
+        font-size: 10px;
+    }       
 }
 @media (min-width: 768px) and (max-width:1023px) {
     header h1{
@@ -174,5 +224,11 @@ header h1{
     }
     .hero-content p{
         font-size: 10px;
-    }    
+    }
+    .categoriesContainer hr{
+        width:7%;
+    }
+    .categoryCard h5{
+        font-size: 10px;
+    }          
 } 
