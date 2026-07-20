@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    height: 70px;
+    background-color: #ff6600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 1% 5%;
+}
+header img{
+    width: 25px;
+    height: 25px;
+}
+header .fork-knife{
+    color:#ffffff;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-left: -19px;
+}
+header h1{
+    padding-left: 1%;
+}
+.menu-btn{
+    margin-left: auto;
+    font-size: 25px;
+}
+@media screen and (max-width: 320px) {
+    header h1{
+    padding-left: 3%;
+    }
+}
+@media (min-width:321px) and (max-width: 767px) {
+    header h1{
+    padding-left: 2%;
+    }
+}
+@media (min-width: 768px) and (max-width:1024px) {
+    header h1{
+    padding-left: 1.5%;
+    }
+} 
