@@ -5,12 +5,17 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 70px;
     background-color: #ff6600;
     color: #ffffff;
     display: flex;
     align-items: center;
     padding: 1% 5%;
+    z-index: 999;
 }
 header img{
     width: 25px;
@@ -112,10 +117,10 @@ header h1{
     color: rgb(212, 212, 212);
     margin-top: 1%;
 }
-.categoriesContainer h4{
+.categoriesContainer h4, .mealContainer h4{
     font-size: 25px;
 }
-.categoriesContainer hr{
+.categoriesContainer hr, .mealContainer hr{
     width:4%;
     border: 2px solid #ff6600;
 }
@@ -123,13 +128,23 @@ header h1{
     padding: 3% 5%;
     background-color: #f7f4f4;
 }
+.mealContainer{
+    padding:3% 5% 0 5%;
+    background-color: #ffff;
+}
 .categoriesCards{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap:2%;
+    gap:30px;
     margin: 3% 0 5% 0;
 }
-.categoryCard{
+.searchGrid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:30px;
+    margin: 5% 0 5% 0;
+}
+.categoryCard, .searchCards{
     border-radius: 3%;
     background: #ffff;
     position: relative;
@@ -144,7 +159,27 @@ header h1{
     right: 2%;
     top:2%
 }
-.categoryCard img{
+.searchCards h5{
+    border:1px solid #ffff;
+    border-radius: 45px;
+    background-color: #ffff;
+    color: #ff6600;
+    padding:0.5% 4%;
+    position: absolute;
+    right: 2%;
+    top:2%
+}
+.searchCards p, .searchCards h6{
+    margin-left: 5%;
+    margin-top: 2%;
+}
+.searchCards h6{
+    font-size: 25px;
+}
+.searchCards p{
+    color: rgb(150, 150, 150);
+}
+.categoryCard img, .searchCards img{
     width: 100%;
     object-fit: contain;
 }
@@ -169,10 +204,10 @@ header h1{
     .hero-content p{
         font-size: 7px;
     } 
-    .categoriesContainer hr{
+    .categoriesContainer hr, .mealContainer hr{
         width:20%;
     }
-    .categoryCard h5{
+    .categoryCard h5, .searchCards h5{
         font-size: 7px;
     }   
 }
@@ -197,10 +232,10 @@ header h1{
     .hero-content p{
         font-size: 8px;
     }
-    .categoriesContainer hr{
+    .categoriesContainer hr, .mealContainer hr{
         width:10%;
     }
-    .categoryCard h5{
+    .categoryCard h5, .searchCards h5{
         font-size: 10px;
     }       
 }
@@ -225,10 +260,10 @@ header h1{
     .hero-content p{
         font-size: 10px;
     }
-    .categoriesContainer hr{
+    .categoriesContainer hr, .mealContainer hr{
         width:7%;
     }
-    .categoryCard h5{
+    .categoryCard h5, .searchCards h5{
         font-size: 10px;
     }          
 } 

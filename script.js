@@ -38,3 +38,38 @@ async function categoryData(){
     }
 }
 categoryData();
+const API = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+document.getElementById("search-btn").addEventListener("click", async function () {
+    const name = document.getElementById("mealSearch").value;
+    const mealContainer = document.getElementById("mealContainer");
+    mealContainer.innerHTML = "";
+    try{
+        const response = await fetch(API + name);
+        if (!response.ok) {
+            throw new Error("Failed to fetch meal data.");
+        }
+        const data = await response.json();
+        mealContainer.innerHTML =`
+            <h4>MEALS</h4>
+            <hr>
+            <section class="searchGrid"></section>
+        `;
+        const searchGrid = document.querySelector(".searchGrid");
+        if (data.meals) {
+            data.meals.forEach((meal) => {
+                searchGrid.innerHTML += `
+                    <section class="searchCards">
+                        <h5>${meal.strCategory}</h5>
+                        <img src="${meal.strMealThumb}" alt="${meal.strCategory}">
+                        <p>${meal.strArea}</p>
+                        <h6>${meal.strMeal}</h6>
+                    </section>
+                `;
+            });
+        } else {
+            mealContainer.innerHTML = "<p>No meals found.</p>";
+        }
+    }catch(error){
+        document.getElementById("mealContainer").textContent = "Unable to search meals list !";
+    }
+});
