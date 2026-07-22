@@ -106,6 +106,7 @@ header h1{
     font-size: 30px;
     margin-left: 10px;
     padding: 15px 20px;
+    cursor:pointer;
 }
 .hero-content h3{
     font-size: 50px;
@@ -120,7 +121,7 @@ header h1{
 .categoriesContainer h4, .mealContainer h4{
     font-size: 25px;
 }
-.categoriesContainer hr, .mealContainer hr{
+.categoriesContainer hr, .mealContainer hr, .mealHeadingHr{
     width:4%;
     border: 2px solid #ff6600;
 }
@@ -137,14 +138,15 @@ header h1{
     grid-template-columns: repeat(4, 1fr);
     gap:30px;
     margin: 3% 0 5% 0;
+    cursor:pointer;
 }
-.searchGrid{
+.searchGrid, .mealSection{
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap:30px;
     margin: 5% 0 5% 0;
 }
-.categoryCard, .searchCards{
+.categoryCard, .searchCards, .mealCard{
     border-radius: 3%;
     background: #ffff;
     position: relative;
@@ -169,19 +171,50 @@ header h1{
     right: 2%;
     top:2%
 }
-.searchCards p, .searchCards h6{
+.searchCards p, .searchCards h6, .mealCard p, .mealCard h6{
     margin-left: 5%;
     margin-top: 2%;
 }
-.searchCards h6{
+.searchCards h6, .mealCard h6{
     font-size: 25px;
 }
-.searchCards p{
+.searchCards p, .mealCard p{
     color: rgb(150, 150, 150);
 }
-.categoryCard img, .searchCards img{
+.categoryCard img, .searchCards img, .mealCard img{
     width: 100%;
     object-fit: contain;
+}
+.hidden{
+    display: none;
+}
+.categoryInfo{
+    border: 2px solid #ff6600;
+    background-color: #f7f4f4;
+}
+.categoryInfo, .mealHeading, .mealHeadingHr{
+    margin: 0 5%;
+}
+.categoryInfo h2{
+    color: #c24f03; 
+}
+.categoryDescription{
+    color: rgb(112, 112, 112);
+    margin: 1.5% 1%;
+    font-size: 25px;
+    line-height: 1.5;
+}
+.categoryTitle{
+    margin: 1.5% 1% 0 1%;
+}
+.mealHeading{
+    padding-top: 3%;
+    font-size: 35px;
+}
+.mealSection{
+    margin-left: 5%;
+    margin-right: 5%;
+    cursor: pointer;
 }
 @media screen and (max-width: 320px) {
     header h1{
@@ -204,7 +237,7 @@ header h1{
     .hero-content p{
         font-size: 7px;
     } 
-    .categoriesContainer hr, .mealContainer hr{
+    .categoriesContainer hr, .mealContainer hr, .mealHeadingHr{
         width:20%;
     }
     .categoryCard h5, .searchCards h5{
@@ -232,7 +265,7 @@ header h1{
     .hero-content p{
         font-size: 8px;
     }
-    .categoriesContainer hr, .mealContainer hr{
+    .categoriesContainer hr, .mealContainer hr, .mealHeadingHr{
         width:10%;
     }
     .categoryCard h5, .searchCards h5{
@@ -260,7 +293,7 @@ header h1{
     .hero-content p{
         font-size: 10px;
     }
-    .categoriesContainer hr, .mealContainer hr{
+    .categoriesContainer hr, .mealContainer hr, .mealHeadingHr{
         width:7%;
     }
     .categoryCard h5, .searchCards h5{

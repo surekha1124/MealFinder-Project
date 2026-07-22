@@ -1,3 +1,4 @@
+let allCategories = [];
 const hamburgerMenu =document.getElementById("hamburgerMenu");
 document.querySelector(".menu-btn").onclick=()=>{
     hamburgerMenu.classList.add("active");
@@ -21,18 +22,17 @@ async function categoryData(){
     try{
         const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
         const data = await response.json();
-        const containerCards = data.categories.map((product)=>{
-        return(
-            `
-                <div class="categoryCard">
-                    <h5>${product.strCategory}</h5>
-                    <img src=${product.strCategoryThumb} alt=${product.strCategory}>
-                </div>
-            `
-        );
-    });
-    const categories = document.getElementById('categoriesCards');
-    categories.innerHTML = containerCards.join(" ");
+        allCategories = data.categories;
+        const categories = document.getElementById("categoriesCards");
+        categories.innerHTML = "";
+        data.categories.forEach(category => {
+            categories.innerHTML += `
+                <section class="categoryCard" data-category="${category.strCategory}">
+                    <h5>${category.strCategory}</h5>
+                    <img src="${category.strCategoryThumb}" alt="${category.strCategory}">
+                </section>
+            `;
+        });
     }catch(error){
         document.getElementById("categoriesCards").textContent = "Unable to load Categories List !";
     }
@@ -73,3 +73,31 @@ document.getElementById("search-btn").addEventListener("click", async function (
         document.getElementById("mealContainer").textContent = "Unable to search meals list !";
     }
 });
+document.getElementById("categoriesCards").addEventListener("click", function (e) {
+    const card = e.target.closest(".categoryCard");
+    if (!card) return;
+    const category = card.dataset.category;
+    getMeals(category);
+});
+async function getMeals(category){
+    document.getElementById("categoriesContainer").classList.add("hidden");
+    document.getElementById("categoryInfo").classList.remove("hidden");
+    document.getElementById("mealHeading").classList.remove("hidden");
+    document.getElementById("mealHeadingHr").classList.remove("hidden");
+    const selectedCategory = allCategories.find(item => item.strCategory === category);
+    document.getElementById("categoryTitle").textContent = selectedCategory.strCategory;
+    document.getElementById("categoryDescription").textContent = selectedCategory.strCategoryDescription;
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const data = await response.json();
+    const mealSection = document.getElementById("mealSection");
+    mealSection.innerHTML="";
+    data.meals.forEach(meal=>{
+        mealSection.innerHTML +=`
+            <section class="mealCard" data-id="${meal.idMeal}">
+                <img src="${meal.strMealThumb}">
+                <p>${meal.strArea}</p>
+                <h6>${meal.strMeal}</h6>
+            </section>
+        `;
+    });
+}
